@@ -1,0 +1,30 @@
+{
+  "name": "stdhttp",
+  "version": "1.0.0",
+  "description": "Simple http server for stdout, a file or a piece of text",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/96f3e4c/stdhttp.git"
+  },
+  "keywords": [
+    "cli",
+    "command",
+    "http-server",
+    "stdout",
+    "pipe"
+  ],
+  "author": "ramki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/96f3e4c/stdhttp/issues"
+  },
+  "homepage": "https://github.com/96f3e4c/stdhttp#readme",
+  "dependencies": {
+    "commander": "^3.0.2",
+    "colors": "^1.4.0"
+  }
+}
