@@ -1,5 +1,5 @@
 {
-  "name": "stdhttp",
+  "name": "stdserve",
   "version": "1.0.0",
   "description": "Simple http server for stdout, a file or a piece of text",
   "main": "index.js",
@@ -7,11 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "stdhttp": "./bin/stdhttp.js"
+    "stdserve": "./bin/stdserve.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/96f3e4c/stdhttp.git"
+    "url": "git+https://github.com/96f3e4c/stdserve.git"
   },
   "keywords": [
     "cli",
@@ -23,11 +23,7 @@
   "author": "ramki",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/96f3e4c/stdhttp/issues"
+    "url": "https://github.com/96f3e4c/stdserve/issues"
   },
-  "homepage": "https://github.com/96f3e4c/stdhttp#readme",
-  "dependencies": {
-    "commander": "^3.0.2",
-    "colors": "^1.4.0"
-  }
+  "homepage": "https://github.com/96f3e4c/stdserve#readme"
 }
