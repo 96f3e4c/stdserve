@@ -4,6 +4,9 @@
   "description": "Simple command-line http server for stdout, a file or a piece of text",
   "main": "index.js",
   "scripts": {
+    "build": "babel src --out-dir dist",
+    "eslint": "eslint ./src",
+    "eslint:fix": "eslint --fix ./src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -27,5 +30,18 @@
   "bugs": {
     "url": "https://github.com/96f3e4c/stdserve/issues"
   },
-  "homepage": "https://github.com/96f3e4c/stdserve#readme"
+  "homepage": "https://github.com/96f3e4c/stdserve#readme",
+  "dependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "prettier": "^1.18.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.3",
+    "eslint": "^6.5.1"
+  }
 }
