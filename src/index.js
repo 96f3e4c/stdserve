@@ -1,17 +1,9 @@
-import fs from 'fs'
 import http from 'http'
 import colors from 'colors'
 
 import {getOptions} from './cli'
 
 const options = getOptions()
-
-const getStdIn = () => {
-  console(
-    colors.white('Enter text to serve and press Enter followed by Ctrl+d :'),
-  )
-  return fs.readFileSync(0, 'utf-8')
-}
 
 const logRequest = (request, response) => {
   const {
@@ -29,26 +21,58 @@ const logRequest = (request, response) => {
   )
 }
 
-const server = http.createServer((request, response) => {
-  const {url} = request
-  if (url === '/') {
-    Object.entries(options.httpHeader).forEach(([key, value]) => {
-      response.setHeader(key, value)
+const getStdIn = () =>
+  new Promise(resolve => {
+    let data = ''
+    let canShowStdInPrompt = true
+    process.stdin.on('readable', () => {
+      let chunk = process.stdin.read()
+      if (chunk === null) {
+        if (canShowStdInPrompt) {
+          console.log(
+            colors.white(
+              'Enter text to serve and press Enter and then Ctrl+d :',
+            ),
+          )
+          canShowStdInPrompt = false
+        }
+      } else {
+        canShowStdInPrompt = false
+        do {
+          data += chunk
+          chunk = process.stdin.read()
+        } while (chunk !== null)
+      }
     })
-    response.statusCode = 200
-    response.write(options.body || getStdIn())
-  } else {
-    response.statusCode = 404
-  }
-  logRequest(request, response)
-  response.end()
-})
+    process.stdin.on('end', () => {
+      resolve(data)
+    })
+  })
 
-server.listen(options.port, options.host, error => {
-  if (error) {
-    throw error
-  }
-  console.log(
-    `${colors.cyan('Server running on :')} ${options.host}:${options.port}\n\n`,
-  )
-})
+const init = async () => {
+  const resBody = options.body || (await getStdIn())
+  const server = http.createServer((request, response) => {
+    const {url} = request
+    if (url === '/') {
+      Object.entries(options.httpHeader).forEach(([key, value]) => {
+        response.setHeader(key, value)
+      })
+      response.statusCode = 200
+      response.write(resBody)
+    } else {
+      response.statusCode = 404
+    }
+    logRequest(request, response)
+    response.end()
+  })
+
+  server.listen(options.port, options.host, error => {
+    if (error) {
+      throw error
+    }
+    console.log(
+      `${colors.cyan('Server running on :')} ${options.host}:${options.port}\n`,
+    )
+  })
+}
+init()
