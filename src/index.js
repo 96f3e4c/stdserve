@@ -7,6 +7,9 @@ import {getOptions} from './cli'
 const options = getOptions()
 
 const getStdIn = () => {
+  console(
+    colors.white('Enter text to serve and press Enter followed by Ctrl+d :'),
+  )
   return fs.readFileSync(0, 'utf-8')
 }
 
