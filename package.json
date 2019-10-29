@@ -1,6 +1,6 @@
 {
   "name": "stdserve",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Simple command-line http server for stdout, a file or a piece of text",
   "main": "index.js",
   "scripts": {
