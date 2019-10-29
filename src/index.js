@@ -24,24 +24,16 @@ const logRequest = (request, response) => {
 const getStdIn = () =>
   new Promise(resolve => {
     let data = ''
-    let canShowStdInPrompt = true
+    process.stdin.setEncoding('utf8')
+    if (process.stdin.isTTY) {
+      console.log(
+        colors.white('Enter text to serve and press Enter and then Ctrl+d :'),
+      )
+    }
     process.stdin.on('readable', () => {
-      let chunk = process.stdin.read()
-      if (chunk === null) {
-        if (canShowStdInPrompt) {
-          console.log(
-            colors.white(
-              'Enter text to serve and press Enter and then Ctrl+d :',
-            ),
-          )
-          canShowStdInPrompt = false
-        }
-      } else {
-        canShowStdInPrompt = false
-        do {
-          data += chunk
-          chunk = process.stdin.read()
-        } while (chunk !== null)
+      let chunk
+      while ((chunk = process.stdin.read()) !== null) {
+        data += chunk
       }
     })
     process.stdin.on('end', () => {
