@@ -33,18 +33,18 @@
   },
   "homepage": "https://github.com/96f3e4c/stdserve#readme",
   "dependencies": {
-    "commander": "^3.0.2",
-    "colors": "^1.4.0"
+    "commander": "3.0.2",
+    "colors": "1.4.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.6.3",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.6.0",
-    "eslint-config-prettier": "^6.4.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "prettier": "^1.18.2"
+    "@babel/cli": "7.6.4",
+    "@babel/core": "7.6.4",
+    "@babel/plugin-proposal-class-properties": "7.5.5",
+    "@babel/preset-env": "7.6.3",
+    "babel-eslint": "10.0.3",
+    "eslint": "6.6.0",
+    "eslint-config-prettier": "6.4.0",
+    "eslint-plugin-prettier": "3.1.1",
+    "prettier": "1.18.2"
   }
 }
